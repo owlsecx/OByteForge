@@ -18,13 +18,18 @@
 
 ## 📌 Overview
 
-OByteForge is a security and privacy tool from the OwlSec suite.
+OByteForge brings the everyday binary-analysis tasks together in one tool. It identifies file types, shows an interactive hex view, extracts strings and IOCs, measures entropy and compares binaries. It can also patch bytes, carve embedded files, brute-force XOR keys and check the hardening flags of ELF, PE and Mach-O executables.
 
 ---
 
 ## ✨ Features
 
-- Standalone executable, no Python installation needed.
+- File inspection: 60+ type signatures, MD5/SHA-1/SHA-256 and an entropy verdict
+- Interactive hex viewer and search by hex (with ?? wildcards), ASCII, UTF-16LE or regex
+- String extraction (ASCII + UTF-16LE) with IOC tagging: URLs, IPs, emails, paths, registry keys, base64
+- Per-block entropy map and ent-style statistics (chi-square, serial correlation, Monte-Carlo π)
+- Binary diff, byte patching with .bak backup, range extraction and signature-based file carving
+- XOR with a key or single-byte brute force, ELF/PE/Mach-O analysis with checksec-style hardening flags, and export to C/Python/Go arrays
 
 ---
 
@@ -38,8 +43,14 @@ OByteForge is a security and privacy tool from the OwlSec suite.
 ## 🚀 Usage
 
 ```bash
-./OByteForge
+./OByteForge                                 # interactive menu
+./OByteForge --info sample.bin
+./OByteForge --strings sample.bin --ioc
+./OByteForge --carve firmware.img --out carved/
+./OByteForge --binary /usr/bin/ssh
 ```
+
+Run `./OByteForge --help` for the full list of options.
 
 ---
 
